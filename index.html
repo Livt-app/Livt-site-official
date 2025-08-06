@@ -1,0 +1,379 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIVT | Train. Track. Earn.</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.png" sizes="32x32" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Your CSS starts here */
+
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray: #cccccc;
+      --glow-color: rgba(255, 255, 255, 0.8);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .topnav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgba(10, 10, 10, 0.6);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--white);
+      text-shadow: 0 0 8px var(--glow-color);
+    }
+
+    .nav-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:active {
+      text-shadow: 0 0 8px var(--glow-color);
+    }
+
+    .auth-buttons {
+      display: flex;
+      align-items: center;
+    }
+
+    .auth-buttons button {
+      margin-left: 1rem;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .auth-buttons button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--glow-color);
+    }
+
+    .login {
+      background-color: transparent;
+      color: var(--white);
+      border: 1px solid var(--white);
+    }
+
+    .cta {
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('assets/livtlanding.jpg') center center / cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 5rem;
+      text-align: center;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .livt-title {
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-shadow: 0 0 12px var(--glow-color);
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-top: 1rem;
+      color: var(--gray);
+    }
+
+    .main-cta {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+
+    .subtext {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .start-btn,
+    .demo-btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      font-weight: 700;
+      border-radius: 25px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .start-btn {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .demo-btn {
+      border: 1px solid var(--white);
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .start-btn:hover,
+    .demo-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--glow-color);
+    }
+
+    footer {
+      background-color: #111;
+      color: var(--gray);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: var(--gray);
+      margin: 0 1rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--white);
+    }
+
+    .creator-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 5rem;
+    }
+
+    .creator-card {
+      background-color: rgba(255, 255, 255, 0.02);
+      padding: 2rem;
+      border-radius: 16px;
+      width: 300px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.03);
+      transition: transform 0.3s ease;
+    }
+
+    .creator-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.07);
+    }
+
+    .creator-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .creator-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    .creator-button {
+      margin-top: 3rem;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      background-color: var(--white);
+      color: var(--black);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .creator-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--glow-color);
+    }
+  </style>
+</head>
+<body>
+  <header class="topnav">
+    <div class="logo">LIVT</div>
+    <div class="nav-wrapper">
+      <nav class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#creators">Creators</a>
+        <a href="#why">Why LIVT</a>
+        <a href="#join">Join</a>
+      </nav>
+    </div>
+    <div class="auth-buttons">
+      <a href="login.html"><button class="login">Log In</button></a>
+      <a href="#join"><button class="cta">Start for Free</button></a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1 class="livt-title">LIVT</h1>
+      <p class="tagline">Where creators coach. Where athletes grow.</p>
+      <h2 class="main-cta">Train. Track. Earn.</h2>
+      <p class="subtext">The premium fitness platform where athletes, creators, and performance-minded individuals unlock their elite potential.</p>
+      <div class="cta-buttons">
+        <a href="#join"><button class="start-btn">Start Your Journey</button></a>
+        <a href="#"><button class="demo-btn">▶ Watch Demo</button></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Creators Section -->
+  <section id="creators" style="position: relative; padding: 6rem 2rem; background-color: #0a0a0a; text-align: center;">
+    <img src="assets/creator-bg.jpg" alt="" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); opacity: 0.05; width: 100%; max-width: 1000px; z-index: 0; filter: blur(1px);" />
+    <div style="position: relative; z-index: 1;">
+      <h2 style="font-size: 2.8rem; font-weight: 800; text-shadow: 0 0 10px var(--glow-color);">Built for Athletes & Creators</h2>
+      <p style="margin-top: 1rem; font-size: 1.15rem; color: var(--gray); max-width: 850px; margin-inline: auto;">
+        LIVT empowers athletes, coaches, and content creators to monetize their training, grow their brand, and impact thousands—all from a single platform.
+      </p>
+      <div class="creator-cards">
+        <div class="creator-card">
+          <h3>Monetize Instantly</h3>
+          <p>Upload your workouts, programs, and insights. LIVT handles payment, delivery, and user access—so you can focus on growing.</p>
+        </div>
+        <div class="creator-card">
+          <h3>Grow Your Audience</h3>
+          <p>Whether you're an NCAA athlete or a rising trainer, LIVT helps you build a loyal following and drive engagement through exclusive content.</p>
+        </div>
+        <div class="creator-card">
+          <h3>Control Your Brand</h3>
+          <p>Set your pricing, build your plans, and get discovered. LIVT gives you the tools to become more than just an athlete—you become a business.</p>
+        </div>
+      </div>
+      <div style="margin-top: 4rem;">
+        <a href="#why"><button class="creator-button">Become a Creator</button></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why LIVT Section with Background -->
+<section id="why" style="position: relative; padding: 6rem 2rem; background-color: #0a0a0a; text-align: center; overflow: hidden;">
+  <img src="assets/why-bg.jpg" alt="background" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); opacity: 0.03; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: blur(2px);" />
+
+  <div style="position: relative; z-index: 1;">
+    <h2 style="font-size: 2.8rem; font-weight: 800; text-shadow: 0 0 10px var(--glow-color); margin-bottom: 1rem;">
+      Why LIVT?
+    </h2>
+    <p style="color: var(--gray); font-size: 1.15rem; max-width: 850px; margin: auto;">
+      You deserve more than a generic plan. LIVT connects you with real athletes, personalized training, and tools that actually move you forward.
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 4rem;">
+      <div class="creator-card">
+        <h3>Train Like the Best</h3>
+        <p><strong>No fluff</strong> — just the systems that built elite performance.</p>
+      </div>
+      <div class="creator-card">
+        <h3>Stay On Track</h3>
+        <p><strong>Daily check-ins</strong> and smart feedback keep you locked in and progressing.</p>
+      </div>
+      <div class="creator-card">
+        <h3>Join a Creator-Led Movement</h3>
+        <p>Discover rising athletes. <strong>Grow together</strong>. LIVT is where creators lead and users level up.</p>
+      </div>
+      <div class="creator-card">
+        <h3>No More Guesswork</h3>
+        <p><strong>Open the app</strong>. See exactly what to do. Progress made simple.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 4rem;">
+      <a href="#join"><button class="creator-button">Start for Free</button></a>
+    </div>
+  </div>
+</section>
+
+  <footer>
+  &copy; 2025 LIVT LLC. All rights reserved.
+  <div>
+    <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> |
+    <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Use</a> |
+    <a href="mailto:livt.appteam@gmail.com">Contact</a>
+  </div>
+</footer>

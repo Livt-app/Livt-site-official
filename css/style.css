@@ -1,0 +1,269 @@
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray: #cccccc;
+  --glow-color: rgba(255, 255, 255, 0.8);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+/* Navigation */
+.topnav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(10, 10, 10, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--white);
+  text-shadow: 0 0 8px var(--glow-color);
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a:active {
+  color: var(--white);
+  text-shadow: 0 0 8px var(--glow-color);
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.auth-buttons button {
+  margin-left: 1rem;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.auth-buttons button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+.login {
+  background-color: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+
+.cta {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: url('/assets/livtlanding.jpg') center center / cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.livt-title {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px var(--glow-color);
+}
+
+.tagline {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-top: 1rem;
+  color: var(--gray);
+}
+
+.main-cta {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.subtext {
+  font-size: 1rem;
+  color: var(--gray);
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.start-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  font-weight: 700;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.start-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* Footer */
+footer {
+  background-color: var(--black);
+  padding: 4rem 2rem 2rem;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-section h3 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 0.9rem;
+  color: var(--gray);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.footer-section a:hover {
+  color: var(--white);
+  text-shadow: 0 0 6px var(--glow-color);
+}
+
+/* Email Signup */
+.email-signup input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #111;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.email-signup button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  background: linear-gradient(to right, #ffffff, #888);
+  color: var(--black);
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.email-signup button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* App Store Buttons */
+.download-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.download-buttons img {
+  height: 50px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.download-buttons img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gray);
+  border-top: 1px solid #222;
+  padding-top: 1rem;
+}
