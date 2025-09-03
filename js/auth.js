@@ -59,7 +59,12 @@ signInForm?.addEventListener('submit', async (e) => {
     );
     const snap = await getDoc(doc(db, 'users', cred.user.uid));
     const role = snap.exists() ? snap.data().role : 'user';
-     window.location.href = role === 'creator' ? 'creatordashboard.html' : 'index.html';
+    // figure out where to send the user
+const next = new URLSearchParams(location.search).get('next');
+
+// if ?next exists, use it; otherwise go to default (dashboard for creators, home for users)
+window.location.href = next || (role === 'creator' ? 'creatordashboard.html' : 'index.html');
+
   } catch (err) {
     statusEl.textContent = 'Error: ' + err.message;
   }
