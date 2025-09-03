@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>LIVT — Creator Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { --bg:#0b0b0b; --panel:#111; --line:#222; --text:#eaeaea; --muted:#9aa; }
+    *{box-sizing:border-box}
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);margin:0}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:1rem;border-bottom:1px solid #1a1a1a;background:#000;position:sticky;top:0;z-index:10}
+    nav a{color:var(--text);text-decoration:none;margin:0 .6rem}
+    .wrap{max-width:1100px;margin:2rem auto;padding:0 1rem}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1rem}
+    .muted{color:var(--muted)}
+    .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+    .kpi{background:#0f0f0f;border:1px solid var(--line);border-radius:12px;padding:1rem}
+    h2,h3{margin:.2rem 0 1rem}
+    input,textarea,select,button{width:100%;padding:.8rem;margin:.4rem 0;border-radius:10px;border:1px solid var(--line);background:#0f0f0f;color:var(--text)}
+    button{cursor:pointer}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:.6rem;border-bottom:1px solid var(--line);text-align:left}
+    .row-actions{display:flex;gap:.4rem;flex-wrap:wrap}
+    .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.2rem .6rem;font-size:.8rem}
+    .danger{border-color:#7a2b2b;color:#ffb3b3}
+    .success{border-color:#2b7a56;color:#b6ffdf}
+    .tabs{display:flex;gap:.6rem;margin-bottom:1rem}
+    .tab{padding:.6rem 1rem;border:1px solid var(--line);border-radius:999px;background:#0f0f0f;color:var(--text);cursor:pointer}
+    .tab.active{outline:2px solid #444}
+    .hidden{display:none}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+  </style>
+</head>
+<body>
+  <nav>
+    <div><a href="index.html"><strong>LIVT</strong></a></div>
+    <div>
+      <a href="creators.html">Creators</a>
+      <a href="creatordashboard.html">Dashboard</a>
+      <a href="login.html" id="login-link">Login</a>
+      <a href="#" id="logout-link" style="display:none">Logout</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <div class="tabs">
+      <button class="tab active" data-tab="overview">Overview</button>
+      <button class="tab" data-tab="upload">Upload</button>
+      <button class="tab" data-tab="programs">Programs</button>
+      <button class="tab" data-tab="analytics">Analytics</button>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section id="tab-overview" class="card">
+      <h2 id="creator-name">Creator</h2>
+      <p class="muted mono" id="creator-id"></p>
+      <div class="kpis" style="margin-top:1rem">
+        <div class="kpi"><div class="muted">Followers</div><div id="kpi-followers" style="font-size:1.6rem;font-weight:700">—</div></div>
+        <div class="kpi"><div class="muted">Programs</div><div id="kpi-programs" style="font-size:1.6rem;font-weight:700">—</div></div>
+        <div class="kpi"><div class="muted">Total Downloads</div><div id="kpi-downloads" style="font-size:1.6rem;font-weight:700">—</div></div>
+      </div>
+    </section>
+
+    <div class="grid" style="margin-top:1rem">
+      <!-- UPLOAD -->
+      <section id="tab-upload" class="card hidden">
+        <h3>Upload a Training Program</h3>
+        <p class="muted">Accepted: .xlsx, .csv, .pdf</p>
+        <form id="upload-form">
+          <input type="text" name="title" placeholder="Program title" required />
+          <textarea name="description" placeholder="Short description" rows="4"></textarea>
+          <label class="muted">File</label>
+          <input type="file" name="file" accept=".xlsx,.csv,.pdf" required />
+          <label class="muted">Publish now?</label>
+          <select name="published">
+            <option value="true" selected>Yes</option>
+            <option value="false">No (save as draft)</option>
+          </select>
+          <button type="submit">Upload</button>
+          <p id="upload-status" class="muted"></p>
+        </form>
+      </section>
+
+      <!-- PROGRAMS -->
+      <section id="tab-programs" class="card hidden" style="grid-column:span 2">
+        <h3>Your Programs</h3>
+        <table id="program-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Status</th>
+              <th>Views</th>
+              <th>Downloads</th>
+              <th>Uploaded</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="program-rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
+        </table>
+      </section>
+
+      <!-- ANALYTICS -->
+      <section id="tab-analytics" class="card hidden" style="grid-column:span 2">
+        <h3>Analytics (Simple)</h3>
+        <p class="muted">Totals only for now. Charts come later.</p>
+        <div class="kpis" style="margin-top:1rem">
+          <div class="kpi"><div class="muted">Published</div><div id="a-published" style="font-size:1.6rem;font-weight:700">—</div></div>
+          <div class="kpi"><div class="muted">Drafts</div><div id="a-drafts" style="font-size:1.6rem;font-weight:700">—</div></div>
+          <div class="kpi"><div class="muted">30d Uploads</div><div id="a-last30" style="font-size:1.6rem;font-weight:700">—</div></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- scripts -->
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/creator.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>LIVT — Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;background:#0b0b0b;color:#eaeaea}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:1rem;border-bottom:1px solid #1a1a1a;background:#000}
+    nav a{color:#eaeaea;text-decoration:none;margin:0 .6rem}
+    .card{max-width:480px;margin:5rem auto;padding:2rem;background:#111;border:1px solid #222;border-radius:16px}
+    input,select,button{width:100%;padding:.8rem;margin:.4rem 0;border-radius:10px;border:1px solid #2a2a2a;background:#0f0f0f;color:#eaeaea}
+    .muted{color:#9aa}.btn{cursor:pointer}.link{color:#8ab4ff;cursor:pointer}.hidden{display:none}
+  </style>
+</head>
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/auth.js"></script>
+
+<body>
+ <nav>
+  <div><a href="index.html"><strong>LIVT</strong></a></div>
+  <div>
+    <a href="creators.html">Creators</a>
+    <a href="creatordashboard.html">Dashboard</a>
+    <a href="login.html" id="login-link">Login</a>
+    <a href="#" id="logout-link" style="display:none">Logout</a>
+  </div>
+</nav>
+
+
+  <div class="card">
+    <h2>Welcome back</h2>
+    <p id="auth-status" class="muted">Sign in or create an account.</p>
+
+    <!-- Sign in -->
+    <form id="signin-form">
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="password" type="password" placeholder="Password" required />
+      <button class="btn" type="submit">Sign In</button>
+      <p class="muted">No account? <span class="link" id="to-signup">Create one</span></p>
+    </form>
+
+    <!-- Sign up -->
+    <form id="signup-form" class="hidden">
+      <input name="displayName" type="text" placeholder="Display name (public)" />
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="password" type="password" placeholder="Password" required />
+      <label class="muted">I am a:</label>
+      <select name="role" required>
+        <option value="user">User</option>
+        <option value="creator">Creator</option>
+      </select>
+      <button class="btn" type="submit">Create Account</button>
+      <p class="muted">Have an account? <span class="link" id="to-signin">Sign in</span></p>
+    </form>
+
+    <p id="whoami" class="muted" style="margin-top:1rem"></p>
+  </div>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>
+
